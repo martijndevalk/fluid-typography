@@ -1,2 +1,3 @@
-# Fluid typography with CSS clamp() and custom properties
+# Fluid typography
+Demo with CSS clamp() and custom properties
 

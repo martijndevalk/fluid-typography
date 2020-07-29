@@ -19,6 +19,7 @@
 
   /*
     type-scaler explained
+
     if we take a screen width of 1200 pixels, then 1vw would be 12 pixels: 1200 divided by 100.
     So for a font size of 16 pixels, that would be 1.333vw. (PX to VW calculator: https://pxtovw.dev-calc.space/)
     But because I’m combining it with half of the default font size—50% of 16 pixels = 8 pixels—I need to cut the vw value in half as well: 50% of 1.333vw = 0.666vw.)
