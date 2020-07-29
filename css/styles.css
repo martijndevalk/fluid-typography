@@ -1,0 +1,130 @@
+:root {
+  --font-family-base: 'Bitter', serif;
+  --font-family-alt1: 'Lato', sans-serif;
+  --font-family-alt2: 'Lora', serif;
+
+  --minor-second: 1.067;
+  --major-second: 1.125;
+  --minor-third: 1.2;
+  --major-third: 1.25;
+  --perfect-fourth: 1.333;
+  --augmented-fourth: 1.414;
+  --perfect-fifth: 1.5;
+  --golden-ratio: 1.618;
+
+  --type-base-size-min: 100%; /* 16px */
+  --type-base-size-max: 137.5%; /* 22px */
+  --type-scale-ratio: var(--major-third);
+  --type-scaler: 50% + 0.66vw;
+
+  /*
+    type-scaler explained
+    if we take a screen width of 1200 pixels, then 1vw would be 12 pixels: 1200 divided by 100.
+    So for a font size of 16 pixels, that would be 1.333vw. (PX to VW calculator: https://pxtovw.dev-calc.space/)
+    But because I’m combining it with half of the default font size—50% of 16 pixels = 8 pixels—I need to cut the vw value in half as well: 50% of 1.333vw = 0.666vw.)
+   */
+
+  --font-size-xs: calc((1.2em / var(--type-scale-ratio)));
+  --font-size-sm: calc(var(--font-size-xs) * var(--type-scale-ratio));
+  --font-size-md: calc(var(--font-size-sm) * var(--type-scale-ratio));
+  --font-size-lg: calc(var(--font-size-md) * var(--type-scale-ratio));
+  --font-size-xl: calc(var(--font-size-lg) * var(--type-scale-ratio));
+  --font-size-xxl: calc(var(--font-size-xl) * var(--type-scale-ratio));
+}
+
+* {
+  margin: 0;
+}
+
+* + * {
+  margin: 1.2em 0 0;
+}
+
+h1 { font-size: var(--font-size-xxl); }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
+h4 { font-size: var(--font-size-md); }
+h5 { font-size: var(--font-size-sm); }
+h6 { font-size: var(--font-size-xs); }
+
+html {
+  font-size: clamp(var(--type-base-size-min), var(--type-scaler), var(--type-base-size-max));
+}
+
+body {
+  padding: 4em 2em;
+  line-height: 1.65;
+  font-family: var(--font-family-alt1);
+  font-weight: 400;
+}
+
+article {
+  margin: 0 auto;
+  max-width: 48rem;
+}
+
+article > * {
+  max-width: 35rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-base);
+  line-height: 1.15;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.u-lead {
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-alt2);
+  font-weight: 600;
+}
+
+.u-floatRight {
+  float: right;
+}
+
+.u-floatLeft {
+  float: left;
+}
+
+.u-floatLeft,
+.u-floatRight {
+  max-width: 17.5rem;
+  padding: 0 1rem;
+}
+
+figcaption {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  text-align: center;
+  padding: 0 1rem;
+}
+
+blockquote {
+  padding: 1em 0;
+  font-family: var(--font-family-alt2);
+  font-weight: 600;
+  text-align: center;
+}
+
+blockquote > p {
+  font-size: var(--font-size-md);
+}
+
+blockquote > footer {
+  font-weight: 400;
+}
+
+a {
+  color: darkcyan;
+}
+
+.shape-outside {
+  shape-outside: ellipse(48% 50% at 46% 50%);
+}
