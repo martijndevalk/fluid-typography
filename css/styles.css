@@ -12,25 +12,17 @@
   --perfect-fifth: 1.5;
   --golden-ratio: 1.618;
 
-  --type-base-size-min: 100%; /* 16px */
-  --type-base-size-max: 137.5%; /* 22px */
-  --type-scale-ratio: var(--major-third);
-  --type-scaler: 50% + 0.66vw;
+  --growth: 20 / 1000; /* 20px Per 1000px of viewport */
+  --start: 600px; /* Start scaling at this viewport width */
 
-  /*
-    type-scaler explained
-
-    if we take a screen width of 1200 pixels, then 1vw would be 12 pixels: 1200 divided by 100.
-    So for a font size of 16 pixels, that would be 1.333vw. (PX to VW calculator: https://pxtovw.dev-calc.space/)
-    But because I’m combining it with half of the default font size—50% of 16 pixels = 8 pixels—I need to cut the vw value in half as well: 50% of 1.333vw = 0.666vw.)
-   */
-
-  --font-size-xs: calc((1.2em / var(--type-scale-ratio)));
-  --font-size-sm: calc(var(--font-size-xs) * var(--type-scale-ratio));
-  --font-size-md: calc(var(--font-size-sm) * var(--type-scale-ratio));
-  --font-size-lg: calc(var(--font-size-md) * var(--type-scale-ratio));
-  --font-size-xl: calc(var(--font-size-lg) * var(--type-scale-ratio));
-  --font-size-xxl: calc(var(--font-size-xl) * var(--type-scale-ratio));
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-28: 2.8rem;
+  --font-size-34: 3.4rem;
+  --font-size-42: 4.2rem;
 }
 
 * {
@@ -41,31 +33,32 @@
   margin: 1.2em 0 0;
 }
 
-h1 { font-size: var(--font-size-xxl); }
-h2 { font-size: var(--font-size-xl); }
-h3 { font-size: var(--font-size-lg); }
-h4 { font-size: var(--font-size-md); }
-h5 { font-size: var(--font-size-sm); }
-h6 { font-size: var(--font-size-xs); }
-
 html {
-  font-size: clamp(var(--type-base-size-min), var(--type-scaler), var(--type-base-size-max));
+  font-size: 62.5%;
 }
 
 body {
+  font-size: clamp(var(--font-size-16), calc((var(--font-size-16) - var(--growth) * var(--start)) + (var(--growth) * 100vw)), var(--font-size-22));
   padding: 4em 2em;
   line-height: 1.65;
   font-family: var(--font-family-alt1);
   font-weight: 400;
 }
 
+h1 { font-size: clamp(var(--font-size-34), calc((var(--font-size-34) - var(--growth) * var(--start)) + (var(--growth) * 100vw)), var(--font-size-42)); }
+h2 { font-size: clamp(var(--font-size-28), calc((var(--font-size-28) - var(--growth) * var(--start)) + (var(--growth) * 100vw)), var(--font-size-34)); }
+h3 { font-size: clamp(var(--font-size-24), calc((var(--font-size-24) - var(--growth) * var(--start)) + (var(--growth) * 100vw)), var(--font-size-28)); }
+h4 { font-size: clamp(var(--font-size-18), calc((var(--font-size-18) - var(--growth) * var(--start)) + (var(--growth) * 100vw)), var(--font-size-24)); }
+h5 { font-size: clamp(var(--font-size-16), calc((var(--font-size-16) - var(--growth) * var(--start)) + (var(--growth) * 100vw)), var(--font-size-18)); }
+h6 { font-size: clamp(var(--font-size-14), calc((var(--font-size-14) - var(--growth) * var(--start)) + (var(--growth) * 100vw)), var(--font-size-16)); }
+
 article {
   margin: 0 auto;
-  max-width: 48rem;
+  max-width: 100rem;
 }
 
 article > * {
-  max-width: 35rem;
+  max-width: 90rem;
   margin-left: auto;
   margin-right: auto;
 }
